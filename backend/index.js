@@ -11,10 +11,12 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({
+app.use(cors());
+
+/* app.use(cors({
   origin: ["http://localhost:5173", "https://job-assistent.vercel.app" ,"https://job-assistent.vercel.app/login","https://job-assistent.vercel.app/signup"],
   credentials: true
-}));
+})); */
 app.use(express.json());
 app.use(cookieParser());
 
