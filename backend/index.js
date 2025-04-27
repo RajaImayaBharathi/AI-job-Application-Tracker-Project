@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-import authRoutes from "./routes/authroutes";
+import authRoutes from "./routes/authroutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -13,7 +13,6 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: ["http://localhost:5173", "https://job-assistent.vercel.app"],
-  methods: ["POST", "GET"],
   credentials: true
 }));
 app.use(express.json());
