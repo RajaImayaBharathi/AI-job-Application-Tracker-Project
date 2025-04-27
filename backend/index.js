@@ -11,7 +11,7 @@ const app = express();
 dotenv.config();
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect('mongodb+srv://sathyanarayanansakthi:2cslUYGxIaAOXryP@cluster0.q2fciwr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log("Database connected successfully"))
   .catch((err) => console.error("Database connection error:", err));
 
