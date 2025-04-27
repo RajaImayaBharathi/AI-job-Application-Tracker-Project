@@ -7,6 +7,8 @@ import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 
+
+
 // Load environment variables
 dotenv.config();
 
@@ -17,7 +19,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173",  // Frontend URL
+  origin: ["http://localhost:5173", "https://job-assistent.vercel.app"],  // Frontend URLs
+  methods:["POST", "GET"],
   credentials: true
 }));
 app.use(express.json());
