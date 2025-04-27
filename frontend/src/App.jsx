@@ -13,6 +13,8 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import { UserContextProvider } from "./context/UserContext";
 import FeaturesGrid from "./pages/Featurespage";
+import Profile from "./pages/Profile";
+import SecureDocumentVault from "./pages/SecureDocumentVault";
 
 // Axios defaults
 axios.defaults.baseURL = "http://localhost:5000";
@@ -70,6 +72,10 @@ const AppContent = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/vault" element={<SecureDocumentVault/>} />
+          {/*<Route path="/mock-interviews" element={<MockInterviews />} />
+          <Route path="/resume-builder" element={<ResumeBuilder />} /> */}
         </Routes>
       </div>
     </div>

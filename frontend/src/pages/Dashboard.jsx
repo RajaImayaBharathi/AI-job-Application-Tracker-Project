@@ -35,6 +35,7 @@ const Dashboard = () => {
       icon: <FiUser className="text-blue-400 text-xl" />,
       description: "View and edit your profile details",
       color: "border-blue-500/20",
+      onClick: () => navigate("/profile"),
     },
     {
       id: 2,
@@ -42,6 +43,7 @@ const Dashboard = () => {
       icon: <FiFolder className="text-purple-400 text-xl" />,
       description: "Store resumes, cover letters, aadhar and other proof docs",
       color: "border-purple-500/20",
+      onClick: () => navigate("/vault"),
     },
     {
       id: 3,
@@ -119,6 +121,7 @@ const Dashboard = () => {
               <div
                 key={item.id}
                 className={`bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-lg border ${item.color} shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer`}
+                onClick={item.onClick}
               >
                 <div className="flex items-center mb-4">
                   {item.icon}
