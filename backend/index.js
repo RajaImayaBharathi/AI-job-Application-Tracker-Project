@@ -7,8 +7,6 @@ import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 
-
-
 // Load environment variables
 dotenv.config();
 
@@ -19,8 +17,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "https://job-assistent.vercel.app"],  // Frontend URLs
-  methods:["POST", "GET"],
+  origin: ["http://localhost:5173", "https://job-assistent.vercel.app"], // Frontend URLs
+  methods: ["POST", "GET"],
   credentials: true
 }));
 app.use(express.json());
@@ -40,6 +38,5 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Export app for serverless function
+export default app;
