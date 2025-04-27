@@ -17,7 +17,7 @@ import Profile from "./pages/Profile";
 import SecureDocumentVault from "./pages/SecureDocumentVault";
 
 // Axios defaults
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://ai-job-application-tracker-project.vercel.app/";
 axios.defaults.withCredentials = true;
 
 const AppContent = () => {
