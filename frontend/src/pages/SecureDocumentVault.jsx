@@ -22,11 +22,11 @@ const SecureDocumentVault = () => {
   };
 
   return (
-    <div className="bg-slate-950 text-white min-h-screen font-manrope">
+    <div className="bg-slate-950 text-white min-h-screen font-manrope ">
       {/* Header Section */}
-      <header className="mb-8 flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl font-bold text-white">Secure Document Vault</h1>
+      <header className="mb-8 flex justify-between items-center ">
+        <div className="">
+          <h1 className="text-3xl font-bold text-white mt-20">Secure Document Vault</h1>
           <p className="text-gray-400 mt-2">
             Store resumes, cover letters, aadhar and other proof docs
           </p>
