@@ -15,7 +15,7 @@ import { UserContextProvider } from "./context/UserContext";
 import FeaturesGrid from "./pages/Featurespage";
 
 // Axios defaults
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "ai-job-application-tracker-project.vercel.app";
 axios.defaults.withCredentials = true;
 
 const AppContent = () => {
