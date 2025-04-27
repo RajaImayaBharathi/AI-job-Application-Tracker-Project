@@ -5,27 +5,27 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 
-const app = express();
-
 // Load environment variables
 dotenv.config();
 
-// MongoDB Connection
-mongoose.connect('mongodb+srv://sathyanarayanansakthi:2cslUYGxIaAOXryP@cluster0.q2fciwr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
-  .then(() => console.log("Database connected successfully"))
-  .catch((err) => console.error("Database connection error:", err));
+const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:5173", "https://job-assistent.vercel.app"], // Frontend URLs
+  origin: ["http://localhost:5173", "https://job-assistent.vercel.app"],
   methods: ["POST", "GET"],
   credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
 
+// MongoDB Connection
+mongoose.connect('mongodb+srv://sathyanarayanansakthi:2cslUYGxIaAOXryP@cluster0.q2fciwr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+  .then(() => console.log("Database connected successfully"))
+  .catch((err) => console.error("Database connection error:", err));
+
 // Routes
-app.use("/api/auth", authRoutes); // updated route for authentication
+app.use("/api/auth", authRoutes);
 
 // Root test route
 app.get("/", (req, res) => {
@@ -38,5 +38,23 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-// Export app for serverless function
-export default app;
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+// For Vercel serverless function
+export default async function handler(req, res) {
+  // Connect to MongoDB if not already connected
+  if (mongoose.connection.readyState !== 1) {
+    try {
+      await mongoose.connect('mongodb+srv://sathyanarayanansakthi:2cslUYGxIaAOXryP@cluster0.q2fciwr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+      console.log("Database connected in handler");
+    } catch (err) {
+      console.error("Database connection error in handler:", err);
+    }
+  }
+  
+  return app(req, res);
+}
